@@ -14,6 +14,5 @@ int main()
 		if (l == 0)
 			printf("%4d", i);
 	}
-	getchar();
-		return 0;
+	return 0;
 }
