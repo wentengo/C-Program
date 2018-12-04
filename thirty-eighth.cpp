@@ -1,26 +1,22 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "stdio.h"
+#include "string.h"
+
+void reverse_string(char * string)
+{
+	int len = strlen(string);
+	char tmp = *string;
+	*string = *(string + len - 1);
+	*(string + len - 1) = '\0';
+	if (strlen(string + 1) > 1)
+		reverse_string(string + 1);
+	*(string + len - 1) = tmp;
+}
 
 int main()
 {
-	int i = 0;
-	int a[] = { 1, 3, 6, 8, 9, 4, 4, 6, 7 };
-	int sz = sizeof(a) / sizeof(a[0]) - 1;
-	int j = sz;
-	while (i < j)
-	{
-		if ((a[i] & 1) != 1)
-		{
-			int tmp = a[i];
-			a[i] = a[j];
-			a[j] = tmp;
-			j--;
-		}
-		else
-			i++;
-	}
-	for (i = 0; i <= sz; i++)
-		printf("%2d", a[i]);
-	getchar();
+	char string[] = "abcdef";
+	reverse_string(string);
+	printf("%s\n", string);
 	return 0;
 }
